@@ -6,29 +6,22 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="dialect">
-			org.hibernate.dialect.MySQLDialect
-		</property>
-		<property name="connection.url">
-			jdbc:mysql://localhost:3306/novel
-		</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">1234</property>
-		<property name="connection.driver_class">
-			com.mysql.jdbc.Driver
-		</property>
-		<property name="myeclipse.connection.profile">
-			com.mysql.jdbc.Driver
-		</property>
-		<mapping resource="cn.edu.glut.entity/Vote.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/User.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/Chapter.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/Userprofile.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/Userrights.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/Comment.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/ParentChildren.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/Book.hbm.xml" />
-		<mapping resource="cn.edu.glut.entity/BookRack.hbm.xml" />
+		
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
+		
+		<mapping resource="cn/edu/glut/entity/Vote.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/User.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/Chapter.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/Userprofile.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/Userrights.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/Comment.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/ParentChildren.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/Book.hbm.xml" />
+		<mapping resource="cn/edu/glut/entity/BookRack.hbm.xml" />
 
 	</session-factory>
 

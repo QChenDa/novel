@@ -1,5 +1,7 @@
 package cn.edu.glut.entity;
 
+import java.io.Serializable;
+
 import cn.edu.glut.entity.Comment;
 
 /**
@@ -7,7 +9,7 @@ import cn.edu.glut.entity.Comment;
  * the ParentChildrenId entity. @author MyEclipse Persistence Tools
  */
 
-public class ParentChildrenId  {
+public class ParentChildrenId  implements Serializable{
 
 	// Fields
 
