@@ -3,8 +3,13 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="default" extends="struts-default" namespace="/">
-		
+	<package name="User" extends="struts-default" namespace="/">
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="registersuccess">/index.jsp</result>
+			<result name="registerfailed">/error.jsp</result>
+			<result name="loginsuccess">/index.jsp</result>
+			<result name="loginfailed">/error.jsp</result>
+		</action>
 	</package>
 </struts>
 

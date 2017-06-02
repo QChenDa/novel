@@ -12,8 +12,8 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-
-
+				
+			
 	<!-- 配置c3p0连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 注入属性值 -->
@@ -40,8 +40,22 @@
 	<!-- 开启事务注解 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-
-
+	<!-- Bean注入 -->
+	<bean id="userAction" class="cn.edu.glut.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<bean id="userService" class="cn.edu.glut.serviceimpl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="userDao" class="cn.edu.glut.daoimpl.copy.UserDaoImpl">
+		<!-- 注入HibernateTemplate -->
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 
 	
 </beans>

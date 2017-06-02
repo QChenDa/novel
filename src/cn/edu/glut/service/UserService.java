@@ -1,5 +1,13 @@
 package cn.edu.glut.service;
 
-public class UserService {
+import cn.edu.glut.entity.User;
 
+public interface UserService {
+	
+	//µÇÂ¼
+	User login(User user);
+	
+	//×¢²á
+	Boolean addUser(User user);
+	
 }

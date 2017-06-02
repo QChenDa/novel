@@ -49,15 +49,15 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="mysuperscript.php" autocomplete="on"> 
+                            <form  action="${pageContext.request.contextPath }/user_login.action" method="post" autocomplete="on" > 
                                 <h1>登录</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > 用户名或者电子邮箱： </label>
-                                    <input id="username" name="username" required="required" type="text" />
+                                    <input id="username" name="userName" required="required" type="text" />
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> 密码： </label>
-                                    <input id="password" name="password" required="required" type="password"/> 
+                                    <input id="password" name="userPw" required="required" type="password"/> 
                                 </p>
                                 <p class="keeplogin"> 
 									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
@@ -74,24 +74,24 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="mysuperscript.php" autocomplete="on"> 
+                            <form  action="${pageContext.request.contextPath }/user_register.action" method="post" autocomplete="on"> 
                                 <h1> 注册 </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u">用户名：</label>
-                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text"  />
+                                    <input id="usernamesignup" name="userName" required="required" type="text"  />
                                 </p>
                                 <p> 
                                     <label for="emailsignup" class="youmail" data-icon="e" > 电子邮箱：</label>
-                                    <input id="emailsignup" name="emailsignup" required="required" type="email" > 
+                                    <input id="emailsignup" name="userEmali" required="required" type="email" > 
                                 </p>
                                 <p> 
                                     <label for="passwordsignup" class="youpasswd" data-icon="p">密码： </label>
-                                    <input id="passwordsignup" name="passwordsignup" required="required" type="password" />
+                                    <input id="passwordsignup" name="userPw" required="required" type="password" />
                                 </p>
-                                <p> 
+<!--                                 <p> 
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">确认密码：</label>
-                                    <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" />
-                                </p>
+                                    <input id="passwordsignup_confirm" name="userPw" required="required" type="password" />
+                                </p> -->
                                 <p class="signin button"> 
 									<input type="submit" value="注册"/> 
 								</p>

@@ -3,7 +3,18 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<script type="text/javascript">
+function infoJumpTo(){
+	var a;
+	if($existUser=null){
+		Htt
+		response.sendRedirect("/novel/WebRoot/loginAndRegister.html");
+		}else{
+		a=$existUser.userName;
+		}
+}
 
+</script>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -21,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="loginAndRegister.html">登录</a> <br>
+    <!-- <a href="javascript:void(0)" onclick="infoJumpTo()" name="$a">登录</a> -->
+    <a href="loginAndRegister.html">登录</a>
   </body>
 </html>
