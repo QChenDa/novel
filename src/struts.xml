@@ -10,6 +10,12 @@
 			<result name="loginsuccess">/index.jsp</result>
 			<result name="loginfailed">/error.jsp</result>
 		</action>
+		<action name="author_*" class="authorAction" method="{1}">
+			<result name="registersuccess">/index.jsp</result>
+			<result name="registerfailed">/error.jsp</result>
+			<result name="loginsuccess">/index.jsp</result>
+			<result name="loginfailed">/error.jsp</result>
+		</action>
 	</package>
 </struts>
 

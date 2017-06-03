@@ -8,6 +8,7 @@ public interface UserDao {
 	boolean addUser(User user);
 	boolean findByName(String name);
 	boolean findByEmail(String email);
-	void delete(String name);
+	void delete(User user);
 	User find(User user);
+	User update(User user);
 }

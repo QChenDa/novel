@@ -19,41 +19,56 @@
         <property name="userEmali" type="string">
             <column name="User_Emali" length="50" not-null="true" />
         </property>
-        <set name="books" inverse="true">
+        
+        
+        <!-- 用户与书籍 -->
+        <set name="books" inverse="true" >
             <key>
                 <column name="User_Id" precision="8" scale="0" not-null="true" />
             </key>
             <one-to-many class="cn.edu.glut.entity.Book" />
         </set>
+        
+        <!-- 用户与评论 -->
         <set name="comments" inverse="true">
             <key>
                 <column name="User_Id" precision="8" scale="0" not-null="true" />
             </key>
             <one-to-many class="cn.edu.glut.entity.Comment" />
         </set>
+        
+        <!-- 用户与书架 -->
         <set name="bookRacks" inverse="true">
             <key>
                 <column name="User_Id" precision="8" scale="0" not-null="true" />
             </key>
             <one-to-many class="cn.edu.glut.entity.BookRack" />
         </set>
-        <set name="userrightses" inverse="true">
+        
+        <!-- 用户与权限 -->
+        <set name="userrightses" inverse="true" cascade="save-update,delete">
             <key>
                 <column name="User_Id" precision="8" scale="0" not-null="true" unique="true" />
             </key>
             <one-to-many class="cn.edu.glut.entity.Userrights" />
         </set>
-        <set name="userprofiles" inverse="true">
+        
+        <!-- -用户与用户简介 -->
+        <set name="userprofiles" inverse="true" cascade="save-update,delete">
             <key>
                 <column name="User_Id" precision="8" scale="0" not-null="true" unique="true" />
             </key>
             <one-to-many class="cn.edu.glut.entity.Userprofile" />
         </set>
+        
+        <!-- 用户与投票 -->
         <set name="votes" inverse="true">
             <key>
                 <column name="User_Id" precision="8" scale="0" not-null="true" />
             </key>
             <one-to-many class="cn.edu.glut.entity.Vote" />
         </set>
+        
+        
     </class>
 </hibernate-mapping>

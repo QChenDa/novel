@@ -50,12 +50,25 @@
 	<bean id="userDao" class="cn.edu.glut.daoimpl.copy.UserDaoImpl">
 		<!-- 注入HibernateTemplate -->
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-
+	<!-- 作者模块 -->
+	<bean id="authorAction" class="cn.edu.glut.action.AuthorAction">
+		<property name="authorService" ref="authorService"></property>
+	</bean>
+	<bean id="authorService" class="cn.edu.glut.serviceimpl.AuthorServiceImpl">
+		<property name="authorDao" ref="authorDao"></property>
+	</bean>
+	<bean id="authorDao" class="cn.edu.glut.daoimpl.copy.AuthorDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 用户信息模块 -->
 	
 </beans>
