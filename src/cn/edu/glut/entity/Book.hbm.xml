@@ -8,7 +8,7 @@
     <class name="cn.edu.glut.entity.Book" table="book" catalog="novel">
         <id name="bookId" type="integer">
             <column name="Book_Id" />
-            <generator class="identity" />
+            <generator class="increment" />
         </id>
         <many-to-one name="user" class="cn.edu.glut.entity.User" fetch="select">
             <column name="User_Id" precision="8" scale="0" not-null="true" />
