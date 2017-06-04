@@ -70,5 +70,25 @@
 	</bean>
 	
 	<!-- 用户信息模块 -->
+	<bean id="userprofileAction" class="cn.edu.glut.action.UserprofileAction">
+		<property name="userprofileService" ref="userprofileService"></property>
+	</bean>
+	<bean id="userprofileService" class="cn.edu.glut.serviceimpl.UserprofileServiceImpl">
+		<property name="userprofileDao" ref="userprofileDao"></property>
+	</bean>
+	<bean id="userprofileDao" class="cn.edu.glut.daoimpl.copy.UserprofileDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<!-- 管理员模块 -->
+	<bean id="adminAction" class="cn.edu.glut.action.AdminAction">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+	<bean id="adminService" class="cn.edu.glut.serviceimpl.AdminServiceImpl">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+	<bean id="adminDao" class="cn.edu.glut.daoimpl.copy.AdminDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
 	
 </beans>

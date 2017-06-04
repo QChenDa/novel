@@ -112,4 +112,21 @@ public class Userprofile  {
 		this.userBooks = userBooks;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		return "Userprofile [userId=" + userId + ", user=" + user
+				+ ", userEmali=" + userEmali + ", userAddress=" + userAddress
+				+ ", userPhone=" + userPhone + ", userName=" + userName
+				+ ", userPw=" + userPw + ", userBooks=" + userBooks + "]";
+	}
+
+	
+	
+	
+	
+	
+	
+	
 }

@@ -10,9 +10,11 @@
             <column name="User_Id" precision="8" scale="0" />
             <generator class="increment" />
         </id>
+        <!-- 用户信息与用户 -->
         <many-to-one name="user" class="cn.edu.glut.entity.User" update="false" insert="false" fetch="select">
             <column name="User_Id" precision="8" scale="0" not-null="true" unique="true" />
         </many-to-one>
+        
         <property name="userEmali" type="string">
             <column name="User_Emali" length="50" />
         </property>

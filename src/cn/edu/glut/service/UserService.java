@@ -10,4 +10,8 @@ public interface UserService {
 	//×¢²á
 	Boolean addUser(User user);
 	
+	//ĞŞ¸ÄÓÃ»§
+	void updateUser(User user);
+	
+	
 }

@@ -16,6 +16,14 @@
 			<result name="loginsuccess">/index.jsp</result>
 			<result name="loginfailed">/error.jsp</result>
 		</action>
+		<action name="admin_*" class="adminAction" method="{1}">
+			<result name="loginsuccess">/jsp/admin/default.jsp</result>
+			<result name="success">/jsp/admin/operaSuccess.jsp</result>
+			<result name="input">/jsp/admin/login.jsp</result>
+		</action>
+		<action name="userprofile_*" class="userprofileAction" method="{1}">
+			<result name="success">/jsp/admin/operaSuccess.jsp</result>
+		</action>
 	</package>
 </struts>
 

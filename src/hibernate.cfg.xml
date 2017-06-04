@@ -22,7 +22,7 @@
 		<mapping resource="cn/edu/glut/entity/ParentChildren.hbm.xml" />
 		<mapping resource="cn/edu/glut/entity/Book.hbm.xml" />
 		<mapping resource="cn/edu/glut/entity/BookRack.hbm.xml" />
-
+		<mapping resource="cn/edu/glut/entity/Admin.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
