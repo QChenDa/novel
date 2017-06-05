@@ -22,7 +22,9 @@
 			<result name="input">/jsp/admin/login.jsp</result>
 		</action>
 		<action name="userprofile_*" class="userprofileAction" method="{1}">
-			<result name="success">/jsp/admin/operaSuccess.jsp</result>
+			<result name="operatersuccess">/jsp/admin/operaSuccess.jsp</result>
+			<result name="success"> /jsp/admin/employerlist.jsp</result>
+			<result name="deletesuccess" type="redirectAction">userprofile_getAllUserprofile.action</result>
 		</action>
 	</package>
 </struts>

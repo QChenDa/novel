@@ -91,4 +91,10 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
+	<bean id="superDao" class="cn.edu.glut.daoimpl.copy.SuperDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
 </beans>
