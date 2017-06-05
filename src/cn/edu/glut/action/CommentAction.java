@@ -2,36 +2,41 @@ package cn.edu.glut.action;
 
 import java.util.Date;
 
-import javax.annotation.Resource;
-
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-
 import cn.edu.glut.entity.Comment;
+import cn.edu.glut.entity.User;
 import cn.edu.glut.service.ReadService;
 
-public class CommentAction extends ActionSupport{
-			
-			@Resource(name="readservice")
-			private	ReadService readservice;
-			Comment comment;
-			
+import com.opensymphony.xwork2.ActionSupport;
 
-			public void TextComment(){
-				
-				Date commentTime = new Date() ;
-				comment.setCommentTime(commentTime);
-				
-		
-				readservice.AddComment(comment);
-		
-			}
-			
-			public Comment getComment() {
-				return comment;
-			}
-			
-			public void setComment(Comment comment) {
-				this.comment = comment;
-			}
+public class CommentAction extends ActionSupport {
+
+	private ReadService readservice;
+
+	public ReadService getReadservice() {
+		return readservice;
+	}
+
+	public void setReadservice(ReadService readservice) {
+		this.readservice = readservice;
+	}
+
+	Comment comment;
+
+	public void TextComment() {
+		comment = new Comment();
+		User user = new User(4,"jkh","uu","ji") ;	
+		comment.setUser(user);
+		comment.setCommentTitle("adfsa");
+		comment.setCommentText("sdfg");
+		readservice.AddComment(comment);
+
+	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
 }

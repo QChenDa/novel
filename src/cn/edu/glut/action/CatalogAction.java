@@ -2,25 +2,40 @@ package cn.edu.glut.action;
 
 import java.util.List;
 
-import javax.annotation.Resource;
+import org.apache.logging.log4j.core.Logger;
 
+import cn.edu.glut.entity.Book;
 import cn.edu.glut.entity.Chapter;
 import cn.edu.glut.service.ReadService;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CatalogAction extends ActionSupport{
+public class CatalogAction extends ActionSupport {
+
+	private ReadService readservice;
+
+	public String ObtainCatalog() {
+		Book book = new Book();
 	
-			@Resource(name="readservice")
-			private	ReadService readservice;
-			
-			public String ObtainCatalog(){
-				String BookName=null;
-				
-				List<Chapter> chapters = readservice.getAllChapter(BookName);
-					if(chapters.isEmpty())
-						return "obtainCatalogfail";
-					else
-						return "obtainCatalogsuccess";
-			}
+		book.setBookId(3);
+		List<Chapter> chapters = readservice.getAllChapter(book);
+		if (!chapters.isEmpty())
+		{
+			System.out.println("obtainCatalogsuccess");
+			return "obtainCatalogsuccess";
+		}
+		else
+		{
+			System.out.println("obtainCatalogfail");
+			return "obtainCatalogfail";
+		}
+	}
+
+	public ReadService getReadservice() {
+		return readservice;
+	}
+
+	public void setReadservice(ReadService readservice) {
+		this.readservice = readservice;
+	}
 }

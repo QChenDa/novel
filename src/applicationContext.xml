@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
@@ -40,11 +41,55 @@
 	<!-- 开启事务注解 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
-
-
-	<!-- 开启扫描 -->
-	<context:component-scan base-package="cn.edu.glut.*"></context:component-scan>
-	<context:component-scan base-package="cn.edu.glut.serviceimpl"></context:component-scan>
-	<context:component-scan base-package="cn.edu.glut.daoimpl"></context:component-scan>
+		
+	<!-- Dao 注入 SessionFactory -->
+	<bean id="readdao" class="cn.edu.glut.daoimpl.ReadDaoimpl" autowire="byType">			
+		
+		
+	</bean>
 	
+				
+	<!-- Action中需要注入Service -->
+	
+	<!-- 1. 添加书籍到书架 -->
+	<bean id="addbooktorackaction" class="cn.edu.glut.action.AddBookToRackAction" scope="prototype">
+		<property name="readservice" ref="readservice"></property>		
+	</bean>
+	
+	<!-- 2. 从书架中删除书籍 -->
+	<bean id="deletebooktorackaction" class="cn.edu.glut.action.DeleteBookToRackAction" scope="prototype">
+		<property name="readservice" ref="readservice"></property>
+	</bean>
+	
+	<!-- 3. 阅读章节 -->
+	<bean id="readaction" class="cn.edu.glut.action.ReadAction" scope="prototype">
+		<property name="readservice" ref="readservice"></property>
+	</bean>
+	
+	<!-- 4. 列出书的目录 -->
+	<bean id="catalogaction" class="cn.edu.glut.action.CatalogAction" scope="prototype">
+		<property name="readservice" ref="readservice"></property>
+	</bean>
+	
+	<!-- 5. 添加评论 -->
+	<bean id="commentaction" class="cn.edu.glut.action.CommentAction" scope="prototype">
+		<property name="readservice" ref="readservice"></property>
+	</bean>
+	
+	<!-- 6. 回复评论 -->
+	<bean id="responsecommentaction" class="cn.edu.glut.action.ResponseCommentAction" scope="prototype">
+		<property name="readservice" ref="readservice"></property>
+	</bean>
+	
+	<!-- 7. 列出书架的书籍 -->
+	<bean id="showrackaction" class="cn.edu.glut.action.ShowRackAction" scope="prototype">
+		<property name="readservice" ref="readservice"></property>
+	</bean>
+
+	<!-- Service 需要注入 Dao -->
+	
+	<bean id="readservice" class="cn.edu.glut.serviceimpl.ReadServiceimpl">
+		<property name="readdao" ref="readdao"></property>
+	</bean>
+
 </beans>

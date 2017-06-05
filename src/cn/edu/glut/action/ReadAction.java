@@ -19,18 +19,25 @@ import java.io.Reader;;
 
 public class ReadAction extends ActionSupport{
 	
-	@Resource(name="readservice")
+	
+	public ReadService getReadservice() {
+		return readservice;
+	}
+
+	public void setReadservice(ReadService readservice) {
+		this.readservice = readservice;
+	}
+
 	private	ReadService readservice;
 	
 		public String Read(){
 			
-			String chn=null;
-			Chapter chapter = readservice.FindChapterByName(chn);
+			Chapter chapter= new Chapter();
 			String chapterurl = chapter.getTextUrl();
 			String chaptertitle = chapter.getTitle();
 			
 					File file=null;
-					file = new File("chapterurl");						
+					file = new File("E:\\1.txt");						
 					Reader in=null;
 					char[] chaptercontext = new char[ (int) file.length()];
 					
@@ -48,16 +55,22 @@ public class ReadAction extends ActionSupport{
 					}
 					try {
 						in.close();
+						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
 					if(chaptercontext != null)
+					{
+						System.out.println("obtainchaptersuccess");
 						return "obtainchaptersuccess";
+					}
 					else
+					{
+						System.out.println("obtainchapterfail");
 						return "obtainchapterfail";
-
+					}
 				
 			
 		}

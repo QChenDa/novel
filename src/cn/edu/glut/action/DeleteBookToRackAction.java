@@ -13,24 +13,29 @@ import cn.edu.glut.entity.User;
 import cn.edu.glut.service.ReadService;
 
 import com.opensymphony.xwork2.ActionSupport;
-@Component("DeleteBookToRack")
-public class DeleteBookToRack extends ActionSupport {
 
-	@Resource(name = "readservice")
+public class DeleteBookToRackAction extends ActionSupport {
+
+	
 	private ReadService readservice;
 
 	public void DeleteBook() {
 		Book book = new Book();
-		User user = new User(4,"jkh","uu","ji");
+		User user = new User();
+		user.setUserId(4);
 		book.setBookId(3);
-		book.setUser(user);
-		Set set = book.getBookRacks();
-		Iterator<BookRack> it = set.iterator();
-
-		BookRack bookrack=null;
-		if (it.hasNext())
-			bookrack = it.next();
-
+		BookRack bookrack = new BookRack();
+		bookrack.setBookRackId(9);
+		bookrack.setBook(book);
+		bookrack.setUser(user);
 		readservice.DeleteBookToRack(bookrack);
+	}
+
+	public ReadService getReadservice() {
+		return readservice;
+	}
+
+	public void setReadservice(ReadService readservice) {
+		this.readservice = readservice;
 	}
 }

@@ -11,7 +11,7 @@ import cn.edu.glut.entity.ParentChildrenId;
 
 public interface ReadService {
 	
-	public List<Chapter> getAllChapter(String BookName);
+	public List<Chapter> getAllChapter(Book Book);
 	
 	public Chapter FindChapterByName(String ChapterName);
 	
@@ -21,7 +21,7 @@ public interface ReadService {
 	
 	public Book FindBookByname(String name);
 	
-	public List<Book> getAllRackBook(String UserName);
+	public List<Book> getAllRackBook(int UserId);
 	
 	public void AddComment(Comment Comment);
 	

@@ -1,7 +1,5 @@
 package cn.edu.glut.action;
 
-
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
@@ -15,24 +13,33 @@ import cn.edu.glut.serviceimpl.ReadServiceimpl;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+public class AddBookToRackAction extends ActionSupport {
 
-@Component("AddBookToRackAction")
-public class AddBookToRackAction extends ActionSupport{
-				
-				@Resource(name="readservice")
-				private	ReadService readservice;
-				
-				public void AddBook() {
-					
-					User user = new User()  ;
-					user.setUserName("asdfda");
-					Book book = new Book();
-					book.setBookName("sss");
-					
-					BookRack bookrack = new BookRack();
-					bookrack.setBook(book);
-					book.setUser(user);
-					readservice.AddBookToRack(bookrack);
-				
-				}
+	private ReadService readservice;
+
+	public ReadService getReadservice() {
+		return readservice;
+	}
+
+	public void setReadservice(ReadService readservice) {
+		this.readservice = readservice;
+	}
+
+	public void AddBook() {
+
+		User user = new User();
+		
+		user.setUserId(4);
+		
+		Book book = new Book();
+	
+		book.setBookId(5);
+
+		BookRack bookrack = new BookRack();
+		
+		bookrack.setUser(user);
+		bookrack.setBook(book);
+		readservice.AddBookToRack(bookrack);
+
+	}
 }

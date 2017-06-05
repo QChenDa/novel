@@ -17,27 +17,31 @@ import cn.edu.glut.entity.ParentChildren;
 import cn.edu.glut.entity.ParentChildrenId;
 import cn.edu.glut.service.ReadService;
 
-@Component("readservice")
 @Transactional
-public class ReadServiceimpl implements ReadService{
-		
-		@Resource(name="readdao")
-		ReadDao readdao;
-		
-		
-		
+public class ReadServiceimpl implements ReadService {
+
+	ReadDao readdao;
+
+	public void setReaddao(ReadDao readdao) {
+		this.readdao = readdao;
+	}
+
+	public ReadDao getReaddao() {
+		return readdao;
+	}
+
 	@Override
-	public List<Chapter> getAllChapter(String BookName) {
+	public List<Chapter> getAllChapter(Book book) {
 		// TODO Auto-generated method stub
-			
-			List<Chapter> list=readdao.getAllChapter(BookName);
+
+		List<Chapter> list = readdao.getAllChapter(book);
 		return list;
 	}
 
 	@Override
 	public Chapter FindChapterByName(String ChapterName) {
 		// TODO Auto-generated method stub
-		Chapter chapter=readdao.FindChapterByName(ChapterName);
+		Chapter chapter = readdao.FindChapterByName(ChapterName);
 		return chapter;
 	}
 
@@ -61,9 +65,9 @@ public class ReadServiceimpl implements ReadService{
 	}
 
 	@Override
-	public List<Book> getAllRackBook(String UserName) {
+	public List<Book> getAllRackBook(int UserName) {
 		// TODO Auto-generated method stub
-		List<Book> list=readdao.getAllRackBook(UserName);
+		List<Book> list = readdao.getAllRackBook(UserName);
 		return list;
 	}
 
@@ -78,5 +82,5 @@ public class ReadServiceimpl implements ReadService{
 		// TODO Auto-generated method stub
 		readdao.AddCommentResponse(pa, paid);
 	}
-			
+
 }

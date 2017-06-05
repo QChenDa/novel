@@ -15,7 +15,7 @@ public class AddBookToRackActionTest {
 	public void testAddBook() {
 		
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-		AddBookToRackAction a = (AddBookToRackAction) ctx.getBean("AddBookToRackAction");
+		AddBookToRackAction a = (AddBookToRackAction) ctx.getBean("addbooktorackaction");
 		a.AddBook();
 	}
 

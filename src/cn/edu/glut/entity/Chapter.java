@@ -14,7 +14,7 @@ public class Chapter  {
 	// Fields
 
 	private Integer chapterId;
-	private Book book;
+	private Integer book;
 	private String title;
 	private String textUrl;
 	private Date editTime;
@@ -26,7 +26,7 @@ public class Chapter  {
 	}
 
 	/** full constructor */
-	public Chapter(Book book, String title, String textUrl,
+	public Chapter(Integer book, String title, String textUrl,
 			Date editTime) {
 		this.book = book;
 		this.title = title;
@@ -44,11 +44,11 @@ public class Chapter  {
 		this.chapterId = chapterId;
 	}
 
-	public Book getBook() {
+	public Integer getBook() {
 		return this.book;
 	}
 
-	public void setBook(Book book) {
+	public void setBook(Integer book) {
 		this.book = book;
 	}
 

@@ -10,9 +10,13 @@
             <column name="Chapter_Id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="book" class="cn.edu.glut.entity.Book" fetch="select">
+        <property name="book" type="int">
+            <column name="Book_Id" not-null="true" />
+        </property>
+        <!--<many-to-one name="book" class="cn.edu.glut.entity.Book" fetch="select">
             <column name="Book_Id" not-null="true" />
         </many-to-one>
+          -->
         <property name="title" type="string">
             <column name="Title" length="50" not-null="true" />
         </property>

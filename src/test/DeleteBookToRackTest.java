@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.edu.glut.action.AddBookToRackAction;
-import cn.edu.glut.action.DeleteBookToRack;
+import cn.edu.glut.action.DeleteBookToRackAction;
 
 public class DeleteBookToRackTest {
 
@@ -33,7 +33,7 @@ public class DeleteBookToRackTest {
 	@Test
 	public void testDeleteBook() {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-		DeleteBookToRack a = (DeleteBookToRack) ctx.getBean("DeleteBookToRack");
+		DeleteBookToRackAction a = (DeleteBookToRackAction) ctx.getBean("deletebooktorackaction");
 		a.DeleteBook();
 	}
 

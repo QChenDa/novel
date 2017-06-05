@@ -12,7 +12,7 @@
         </id>
         <many-to-one name="user" class="cn.edu.glut.entity.User" fetch="select">
             <column name="User_Id" precision="8" scale="0" not-null="true" />
-        </many-to-one>
+        </many-to-one> 
         <property name="commentTitle" type="string">
             <column name="Comment_Title" length="50" not-null="true" />
         </property>
