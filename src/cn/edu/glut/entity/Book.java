@@ -1,5 +1,6 @@
 package cn.edu.glut.entity;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 

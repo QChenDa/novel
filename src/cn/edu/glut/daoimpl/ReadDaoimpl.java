@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 
 import cn.edu.glut.dao.ReadDao;
@@ -16,23 +17,23 @@ import cn.edu.glut.entity.ParentChildrenId;
 
 public class ReadDaoimpl implements ReadDao {
 	
-	private SessionFactory sessionfactory;
+	private SessionFactory sessionFactory;
 
 
-	public SessionFactory getSessionfactory() {
-		return sessionfactory;
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
-	public void setSessionfactory(SessionFactory sessionfactory) {
-		this.sessionfactory = sessionfactory;
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
 	@Override
-	public List<Chapter> getAllChapter(Book book) {
+	public List<Chapter> getAllChapter(int bookid) {
 		// TODO Auto-generated method stub
 	 
-		 String hql = "from Chapter where book=" + book.getBookId();	
-		 Query q = sessionfactory.getCurrentSession().createQuery(hql);		 		 	 
+		 String hql = "from Chapter where book=" + bookid;	
+		 Query q = sessionFactory.openSession().createQuery(hql);		 		 	 
 		 return q.list();
 	}
 
@@ -40,9 +41,8 @@ public class ReadDaoimpl implements ReadDao {
 	public Chapter FindChapterByName(String ChapterName) {
 		// TODO Auto-generated method stub
 
-		String hql = "from Chapter where ChapterName=" + ChapterName;
-		Query q = sessionfactory.getCurrentSession().createQuery(hql);
-
+		String hql = "from Chapter where title=" +"'"+ ChapterName+"'";
+		Query q = sessionFactory.openSession().createQuery(hql);
 		return (Chapter) q.list().get(0);
 	}
 
@@ -50,7 +50,7 @@ public class ReadDaoimpl implements ReadDao {
 	public void AddBookToRack(BookRack BookRack) {
 		// TODO Auto-generated method stub
 
-		sessionfactory.getCurrentSession().save(BookRack);
+		sessionFactory.openSession().save(BookRack);
 
 	}
 
@@ -58,8 +58,8 @@ public class ReadDaoimpl implements ReadDao {
 	public Book FindBookByname(String BookName) {
 		// TODO Auto-generated method stub
 
-		String sql = "from Book where BookName=" + BookName;
-		Query q = sessionfactory.getCurrentSession().createQuery(sql);
+		String hql = "from Book where bookName=" + "'"+BookName+"'";
+		Query q = sessionFactory.openSession().createQuery(hql);
 		return (Book) q.list().get(0);
 	}
 
@@ -67,8 +67,8 @@ public class ReadDaoimpl implements ReadDao {
 	public List<Book> getAllRackBook(int UserId) {
 		// TODO Auto-generated method stub
 
-		String hql = "from BookRack where user=" + UserId;
-		Query q = sessionfactory.getCurrentSession().createQuery(hql);
+		String hql = "from BookRack where user=" +"'"+ UserId+"'";
+		Query q = sessionFactory.openSession().createQuery(hql);
 		return q.list();
 	}
 
@@ -76,21 +76,21 @@ public class ReadDaoimpl implements ReadDao {
 	public void AddComment(Comment Comment) {
 		// TODO Auto-generated method stub
 			Comment.setCommentTime(new Date());
-		sessionfactory.getCurrentSession().save(Comment);
+		sessionFactory.openSession().save(Comment);
 	}
 
 	@Override
 	public void AddCommentResponse(ParentChildren pa, ParentChildrenId paid) {
 		// TODO Auto-generated method stub
 		try {
-			sessionfactory.getCurrentSession().save(paid);
+			sessionFactory.openSession().save(paid);
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 		try {
-			sessionfactory.getCurrentSession().save(pa);
+			sessionFactory.openSession().save(pa);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -100,10 +100,11 @@ public class ReadDaoimpl implements ReadDao {
 	}
 
 	@Override
-	public void DeleteBookToRack(BookRack BookRack) {
+	public void DeleteBookToRack(int bookid) {
 		// TODO Auto-generated method stub
-		sessionfactory.getCurrentSession().delete(BookRack);
-		
+		String sql = "delete from Book_Rack where Book_Id=" +"'"+ bookid+"'";
+		Query q = sessionFactory.openSession().createSQLQuery(sql);
+		q.executeUpdate();
 	}
 
 }

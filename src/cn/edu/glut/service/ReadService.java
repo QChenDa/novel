@@ -11,13 +11,13 @@ import cn.edu.glut.entity.ParentChildrenId;
 
 public interface ReadService {
 	
-	public List<Chapter> getAllChapter(Book Book);
+	public List<Chapter> getAllChapter(int Book);
 	
 	public Chapter FindChapterByName(String ChapterName);
 	
 	public void AddBookToRack(BookRack BookRack);
 	
-	public void DeleteBookToRack(BookRack BookRack);
+	public void DeleteBookToRack(int bookid);
 	
 	public Book FindBookByname(String name);
 	

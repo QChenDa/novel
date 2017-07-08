@@ -20,9 +20,9 @@ import cn.edu.glut.service.ReadService;
 @Transactional
 public class ReadServiceimpl implements ReadService {
 
-	ReadDao readdao;
+	ReadDaoimpl readdao;
 
-	public void setReaddao(ReadDao readdao) {
+	public void setReaddao(ReadDaoimpl readdao) {
 		this.readdao = readdao;
 	}
 
@@ -31,7 +31,7 @@ public class ReadServiceimpl implements ReadService {
 	}
 
 	@Override
-	public List<Chapter> getAllChapter(Book book) {
+	public List<Chapter> getAllChapter(int book) {
 		// TODO Auto-generated method stub
 
 		List<Chapter> list = readdao.getAllChapter(book);
@@ -52,7 +52,7 @@ public class ReadServiceimpl implements ReadService {
 	}
 
 	@Override
-	public void DeleteBookToRack(BookRack BookRack) {
+	public void DeleteBookToRack(int BookRack) {
 		// TODO Auto-generated method stub
 		readdao.DeleteBookToRack(BookRack);
 	}

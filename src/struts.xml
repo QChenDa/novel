@@ -3,7 +3,63 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="default" extends="struts-default" namespace="/">
+	<constant name="struts.objectFactory" value="spring" />
+	<package name="*" extends="struts-default" namespace="/">
+	<!-- 1.读者登陆 -->
+		<action name="ReaderLoginAction" class="ReaderLoginAction" method="ReaderLoginAction">
+			<result name="ReaderLoginAction">main.jsp</result>
+			<result name="false">readerlogin.jsp</result>
+		</action>
+		
+	<!-- 2.读者注册 -->	
+		<action name="ReaderRegistAction" class="ReaderRegistAction" method="ReaderRegistAction">
+			<result name="ReaderRegistAction">readerlogin.jsp</result>
+			<result name="false">/error.jsp</result>
+		</action>
+		
+	<!-- 3.作者登陆 -->	
+		<action name="222" class="AuthorLoginAction" method="{1}">
+			<result name="registersuccess">/index.jsp</result>
+			<result name="registerfailed">/error.jsp</result>
+		</action>
+	
+	<!-- 4.作者注册 -->	
+		<action name="authorlogin" class="userAction" method="{1}">
+			<result name="registersuccess">/index.jsp</result>
+			<result name="registerfailed">/error.jsp</result>
+		</action>
+		
+	<!-- 5.列出书架的书籍 -->	
+		<action name="ShowRackAction" class="ShowRackAction" method="ShowRackBook">
+			<result name="showrackbooksuccess">bookrack.jsp</result>
+			<result name="showrackbookfail">bookrackerror.jsp</result>
+		</action>
+					
+	<!-- 6.列出书的目录 -->	
+		<action name="CatalogAction" class="CatalogAction" method="ObtainCatalog">
+			<result name="obtainCatalogsuccess">book.jsp</result>
+			<result name="obtainCatalogfail">bookerror.jsp</result>
+		</action>
+		
+	<!-- 7.添加评论 -->	
+		<action name="CommentAction" class="CommentAction" method="TextComment">
+			<result name="commentsuccess" type="redirectAction">
+			<param name="actionName">ShowRackAction</param>
+			</result>
+		</action>
+		
+	<!-- 8.从书架中删除书籍 -->	
+		<action name="DeleteBookToRackAction" class="DeleteBookToRackAction" method="DeleteBook">
+			<result name="success" type="redirectAction">
+				<param name="actionName">ShowRackAction</param>
+			</result>
+		</action>
+		
+	<!-- 9.阅读章节 -->	
+		<action name="ReadAction" class="ReadAction" method="Read">
+			<result name="obtainchaptersuccess">chapter.jsp</result>
+			<result name="obtainchapterfail">chaptererror.jsp</result>
+		</action>
 		
 	</package>
 </struts>

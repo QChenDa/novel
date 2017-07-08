@@ -11,10 +11,10 @@ import cn.edu.glut.entity.ParentChildrenId;
 
 
 public interface ReadDao {
-			public List<Chapter> getAllChapter(Book Book);
+			public List<Chapter> getAllChapter(int Bookid);
 			public Chapter FindChapterByName(String ChapterName);
 			public void AddBookToRack(BookRack BookRack);
-			public void DeleteBookToRack(BookRack BookRack);
+			public void DeleteBookToRack(int bookid);
 			public Book FindBookByname(String name);
 			public List<Book> getAllRackBook(int UserId);
 			public void AddComment(Comment Comment);

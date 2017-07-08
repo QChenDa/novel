@@ -39,14 +39,10 @@
 	</bean>
 	
 	<!-- 开启事务注解 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
-		
-	<!-- Dao 注入 SessionFactory -->
-	<bean id="readdao" class="cn.edu.glut.daoimpl.ReadDaoimpl" autowire="byType">			
+	<tx:annotation-driven transaction-manager="transactionManager" mode="aspectj"/>
 		
 		
-	</bean>
+
 	
 				
 	<!-- Action中需要注入Service -->
@@ -57,22 +53,22 @@
 	</bean>
 	
 	<!-- 2. 从书架中删除书籍 -->
-	<bean id="deletebooktorackaction" class="cn.edu.glut.action.DeleteBookToRackAction" scope="prototype">
+	<bean id="DeleteBookToRackAction" class="cn.edu.glut.action.DeleteBookToRackAction" scope="prototype">
 		<property name="readservice" ref="readservice"></property>
 	</bean>
 	
 	<!-- 3. 阅读章节 -->
-	<bean id="readaction" class="cn.edu.glut.action.ReadAction" scope="prototype">
+	<bean id="ReadAction" class="cn.edu.glut.action.ReadAction" scope="prototype">
 		<property name="readservice" ref="readservice"></property>
 	</bean>
 	
 	<!-- 4. 列出书的目录 -->
-	<bean id="catalogaction" class="cn.edu.glut.action.CatalogAction" scope="prototype">
+	<bean id="CatalogAction" class="cn.edu.glut.action.CatalogAction" scope="prototype">
 		<property name="readservice" ref="readservice"></property>
 	</bean>
 	
 	<!-- 5. 添加评论 -->
-	<bean id="commentaction" class="cn.edu.glut.action.CommentAction" scope="prototype">
+	<bean id="CommentAction" class="cn.edu.glut.action.CommentAction" scope="prototype">
 		<property name="readservice" ref="readservice"></property>
 	</bean>
 	
@@ -82,14 +78,47 @@
 	</bean>
 	
 	<!-- 7. 列出书架的书籍 -->
-	<bean id="showrackaction" class="cn.edu.glut.action.ShowRackAction" scope="prototype">
+	<bean id="ShowRackAction" class="cn.edu.glut.action.ShowRackAction" scope="prototype">
 		<property name="readservice" ref="readservice"></property>
 	</bean>
+	
+	<!-- 8. 读者登陆 -->
+	<bean id="ReaderLoginAction" class="cn.edu.glut.action.ReaderLoginAction" scope="prototype">
+		<property name="userloginservice" ref="userloginservice"></property>
+	</bean>
+	
+	<!-- 9. 读者注册 -->
+	<bean id="ReaderRegistAction" class="cn.edu.glut.action.ReaderRegistAction" scope="prototype">
+		<property name="userregistservice" ref="userregistservice"></property>
+	</bean>
+	
 
 	<!-- Service 需要注入 Dao -->
 	
 	<bean id="readservice" class="cn.edu.glut.serviceimpl.ReadServiceimpl">
 		<property name="readdao" ref="readdao"></property>
 	</bean>
-
+	
+	<bean id="userregistservice" class="cn.edu.glut.serviceimpl.UserRegistServiceimpl">
+		<property name="userdao" ref="userdao"></property>
+	</bean>
+	
+	<bean id="userloginservice" class="cn.edu.glut.serviceimpl.UserLoginServiceimpl">
+		<property name="userdao" ref="userdao"></property>
+	</bean>
+	
+	<bean id="userprofileServiceImpl" class="cn.edu.glut.serviceimpl.UserprofileServiceImpl">
+		<property name="userdao" ref="userdao"></property>
+	</bean>
+	
+	<bean id="userrightsServiceImpl" class="cn.edu.glut.serviceimpl.UserrightsServiceImpl">
+		<property name="userdao" ref="userdao"></property>
+	</bean>
+	
+	<!-- Dao 注入 SessionFactory -->
+	<bean id="readdao" class="cn.edu.glut.daoimpl.ReadDaoimpl" autowire="byType">				
+	</bean>
+	
+	<bean id="userdao" class="cn.edu.glut.daoimpl.UserDaoimpl" autowire="byType">				
+	</bean>
 </beans>
